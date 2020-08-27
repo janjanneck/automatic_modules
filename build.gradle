@@ -14,6 +14,12 @@ subprojects {
         flatDir dirs: "../lib"
     }
 
+    configurations {
+        automaticConf
+        pluginConf
+        compile.extendsFrom automaticConf, pluginConf
+    }
+
     compileJava {
         doFirst {
             targetCompatibility = JavaVersion.VERSION_11

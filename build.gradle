@@ -1,0 +1,55 @@
+plugins {
+    id 'java-library'
+}
+
+wrapper.gradleVersion = '5.4'
+wrapper.distributionType = Wrapper.DistributionType.ALL
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+
+    repositories {
+        mavenCentral()
+        flatDir dirs: "../lib"
+    }
+
+    compileJava {
+        doFirst {
+            targetCompatibility = JavaVersion.VERSION_11
+            sourceCompatibility = JavaVersion.VERSION_11
+            println "Classpath: " + classpath.asPath
+            options.compilerArgs =
+                    [
+                            '--module-path',
+                            classpath.asPath,
+                            '-Xlint:dep-ann',
+                            '-Xlint:module',
+                            //'-verbose'
+                    ]
+            classpath = files()
+        }
+
+    }
+
+    afterEvaluate {
+        sourceSets {
+            main {
+                java {
+                    srcDirs = ["src/main/java/$moduleName", "build/generate/"]
+                    java.outputDir = file("$buildDir/modules/$moduleName")
+                }
+            }
+        }
+
+        jar {
+            manifest {
+                attributes(
+                        'Main-Class': 'de.renew.pluginOne.PluginOneStarter'
+                )
+            }
+        }
+    }
+}
+
+defaultTasks 'compileJava'

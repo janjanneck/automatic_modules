@@ -1,22 +1,15 @@
 package de.renew.pluginOne;
 
-import bibliothek.gui.dock.common.DefaultSingleCDockable;
-import bibliothek.gui.dock.common.action.CAction;
 
-import java.awt.*;
+import de.renew.pluginThree.PluginThreeStarter;
 
 public class PluginOneStarter {
     public static void main(String[] args) {
+        System.out.println("This is Plugin 1");
+    }
 
-        DefaultSingleCDockable dockable = new DefaultSingleCDockable("Navigator", new CAction[]{});
-
-
-        Window[] window = Window.getWindows();
-        System.out.println("Windows: ");
-        for (Window window1 : window) {
-            System.out.println(window1.getLocale().toString());
-        }
-
-        String lib = de.renew.pluginTwo.Library.lib;
+    public PluginOneStarter() {
+        System.out.println("Plugin Threes user props: "
+                + PluginThreeStarter.userProperties());
     }
 }

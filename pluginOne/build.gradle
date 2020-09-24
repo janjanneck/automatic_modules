@@ -1,3 +1,4 @@
 dependencies {
     api project(":pluginTwo")
+    automaticConf name: 'de.renew.pluginThree'
 }

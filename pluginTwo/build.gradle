@@ -1,3 +1,6 @@
 dependencies {
     automaticConf name: 'docking-frames-common'
+    automaticConf name: 'freehep-graphics2d-2.4'
+    automaticConf name: 'freehep-graphicsbase-2.4'
+    automaticConf name: 'de.renew.pluginThree'
 }

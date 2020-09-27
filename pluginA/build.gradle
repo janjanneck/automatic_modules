@@ -1,0 +1,14 @@
+dependencies {
+    api project(":pluginLoader")
+}
+
+jar {
+    baseName = "$moduleName"
+}
+
+task copyJar(type: Copy) {
+    from jar // copies output of file produced from jar task
+    into '../lib'
+}
+
+build.finalizedBy copyJar

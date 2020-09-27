@@ -47,14 +47,6 @@ subprojects {
                 }
             }
         }
-
-        jar {
-            manifest {
-                attributes(
-                        'Main-Class': 'de.renew.pluginOne.PluginOneStarter'
-                )
-            }
-        }
     }
 }
 

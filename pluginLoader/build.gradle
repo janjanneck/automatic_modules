@@ -1,0 +1,16 @@
+dependencies {
+    automaticConf name: 'freehep-graphicsbase-2.4'
+    automaticConf name: 'libraryX'
+}
+
+
+jar {
+    baseName = "$moduleName"
+}
+
+task copyJar(type: Copy) {
+    from jar // copies output of file produced from jar task
+    into '../lib'
+}
+
+build.finalizedBy copyJar
